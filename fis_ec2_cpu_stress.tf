@@ -22,20 +22,20 @@ resource "aws_fis_experiment_template" "cpu_stress" {
       key   = "documentArn"
       value = "arn:aws:ssm:us-east-1::document/AWSFIS-Run-CPU-Stress"
     }
-    
-             parameter {
-             key   = "documentParameters"
-             value = jsonencode(
-                    {
-                     DurationSeconds     = "60"
-                     InstallDependencies = "True"
-                    }
-                )
-            }
-         parameter {
-             key   = "duration"
-             value = "PT1M"
-            }
+
+    parameter {
+      key = "documentParameters"
+      value = jsonencode(
+        {
+          DurationSeconds     = "60"
+          InstallDependencies = "True"
+        }
+      )
+    }
+    parameter {
+      key   = "duration"
+      value = "PT1M"
+    }
 
 
     target {

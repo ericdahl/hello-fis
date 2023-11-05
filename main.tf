@@ -19,12 +19,10 @@ locals {
   name = data.aws_default_tags.default.tags["Name"]
 }
 
-#resource "aws_cloudwatch_log_group" "fis" {
-#  name = local.name
-#  retention_in_days = 1
-#}
+resource "aws_s3_bucket" "fis_logs" {
 
-resource "aws_s3_bucket" "fis_logs" {}
+  force_destroy = true
+}
 
 resource "aws_s3_bucket_policy" "fis_logs" {
   bucket = aws_s3_bucket.fis_logs.bucket
