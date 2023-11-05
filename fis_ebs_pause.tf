@@ -40,8 +40,8 @@ resource "aws_fis_experiment_template" "ebs_pause" {
     }
 
     parameters = {
-    availabilityZoneIdentifier = "us-east-1a" }
-
+      availabilityZoneIdentifier = "us-east-1a"
+    }
 
   }
 }

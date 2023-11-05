@@ -39,8 +39,29 @@ $ top
 21811 root      20   0   63164   2636   1768 R 99.9  0.2   0:22.90 stress-ng-cpu
 ```
 
-### fis_ebs_pause.tf
+### `fis_ebs_pause.tf`
 
 ```
 Unable to start Pause Volume IO. Target volumes must be attached to an instance type based on the Nitro system. VolumeId(s): [vol-072843a3ac1890c4e]
+```
+
+### `fis_api_fault.tf`
+
+```
+[ec2-user@ip-10-0-0-132 ~]$ while true; do date ; aws ec2 describe-images --region us-east-1 --owners 131827586829 ; echo; sleep 1; done
+Sun Nov  5 19:52:04 UTC 2023
+
+{
+    "Images": []
+}
+
+Sun Nov  5 19:52:36 UTC 2023
+
+An error occurred (InternalError) when calling the DescribeImages operation (reached max retries: 4): An internal error has occurred
+
+Sun Nov  5 19:52:45 UTC 2023
+{
+    "Images": []
+}
+
 ```
