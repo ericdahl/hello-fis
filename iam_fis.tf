@@ -38,8 +38,25 @@ data "aws_iam_policy_document" "fis_fault_injection" {
   }
 }
 
+
 resource "aws_iam_role_policy" "fis_fault_injection" {
   policy = data.aws_iam_policy_document.fis_fault_injection.json
+  role   = aws_iam_role.fis.id
+}
+
+data "aws_iam_policy_document" "fis_logs" {
+  statement {
+    effect = "Allow"
+    actions = [
+      "logs:CreateLogDelivery" # TODO: more fine-grained?
+    ]
+    resources = ["*"]
+  }
+}
+
+
+resource "aws_iam_role_policy" "fis_logs" {
+  policy = data.aws_iam_policy_document.fis_logs.json
   role   = aws_iam_role.fis.id
 }
 

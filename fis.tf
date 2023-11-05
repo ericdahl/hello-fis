@@ -2,8 +2,18 @@ resource "aws_fis_experiment_template" "example" {
   description = "example"
   role_arn    = aws_iam_role.fis.arn
 
+
+
   stop_condition {
     source = "none"
+  }
+
+  log_configuration {
+    log_schema_version = 2
+
+    s3_configuration {
+      bucket_name = aws_s3_bucket.fis_logs.bucket
+    }
   }
 
   action {
