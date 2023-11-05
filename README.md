@@ -38,3 +38,9 @@ $ top
   PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND
 21811 root      20   0   63164   2636   1768 R 99.9  0.2   0:22.90 stress-ng-cpu
 ```
+
+### fis_ebs_pause.tf
+
+```
+Unable to start Pause Volume IO. Target volumes must be attached to an instance type based on the Nitro system. VolumeId(s): [vol-072843a3ac1890c4e]
+```

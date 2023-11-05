@@ -70,3 +70,21 @@ resource "aws_iam_role_policy_attachment" "fis_managed_network" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSFaultInjectionSimulatorNetworkAccess"
   role       = aws_iam_role.fis.name
 }
+
+data "aws_iam_policy_document" "fis_ebs" {
+  statement {
+    effect = "Allow"
+    actions = [
+      "ec2:DescribeVolumes",
+      "ec2:PauseVolumeIO",
+    ]
+    resources = ["*"]
+  }
+
+}
+
+
+resource "aws_iam_role_policy" "fis_ebs" {
+  policy = data.aws_iam_policy_document.fis_ebs.json
+  role   = aws_iam_role.fis.id
+}

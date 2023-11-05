@@ -87,6 +87,13 @@ echo "ECS_CLUSTER=${local.name}" >> /etc/ecs/ecs.config
 EOF
   )
 
+  tag_specifications {
+    resource_type = "volume"
+    tags = {
+      Name = local.name
+    }
+  }
+
 }
 
 data "aws_ssm_parameter" "ecs_amazon_linux_2" {
