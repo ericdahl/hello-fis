@@ -26,3 +26,15 @@ $ ping 8.8.8.8
 {"id":"EXP24oCUSBeR8hcRKHk","log_type":"action-start","event_timestamp":"2023-11-05T18:50:36.556Z","version":"2","details":{"action_name":"DisruptConnectivity","action_id":"aws:network:disrupt-connectivity","action_start_time":"2023-11-05T18:50:36.545Z","action_targets":{"Subnets":"hello-fis"},"parameters":{"duration":"PT1M","scope":"all"}}}
 {"id":"EXP24oCUSBeR8hcRKHk","log_type":"action-end","event_timestamp":"2023-11-05T18:51:38.199Z","version":"2","details":{"action_name":"DisruptConnectivity","action_id":"aws:network:disrupt-connectivity","action_end_time":"2023-11-05T18:51:38.187Z","action_state":{"status":"completed","reason":"Action was completed."}}}
 ```
+
+### `fis_ec2_cpu_stress.tf`
+
+```
+[ec2-user@ip-10-0-0-97 ~]$ ps auxww | grep stress
+root     21810  0.0  0.2  62516  5088 ?        SL   19:10   0:00 stress-ng --cpu 0 --cpu-method matrixprod -t 60s --cpu-load 100
+root     21811 88.4  0.1  63164  2636 ?        R    19:10   0:46 stress-ng --cpu 0 --cpu-method matrixprod -t 60s --cpu-load 100
+
+$ top
+  PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND
+21811 root      20   0   63164   2636   1768 R 99.9  0.2   0:22.90 stress-ng-cpu
+```
