@@ -65,3 +65,8 @@ resource "aws_iam_role_policy_attachment" "fis_ec2_managed" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSFaultInjectionSimulatorEC2Access"
   role       = aws_iam_role.fis.name
 }
+
+resource "aws_iam_role_policy_attachment" "fis_managed_network" {
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSFaultInjectionSimulatorNetworkAccess"
+  role       = aws_iam_role.fis.name
+}
